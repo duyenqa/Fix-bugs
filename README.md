@@ -65,5 +65,7 @@ Back to "Turn Windows features on or off":
 
 **Step 10:** Back to android studio, continue...
 
+**Refer detail:** [Youtube](https://www.youtube.com/watch?v=EwbNr_rmcwI)
 
-
+## Author
+By Ngô Thị Kim Duyên
