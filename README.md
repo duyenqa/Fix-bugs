@@ -24,9 +24,45 @@ For more details, please check the installation log: C:\Users\Admin\Appdata\Loca
 Intel HAXM installation failed. To install Intell HAXM follow the instructions found at: https://github.com/intel/haxm/wiki/Installation-Instructions-on-Windows
 
 **Solution:**
-Step 1: [Download HAXM]:(https://github.com/intel/haxm/releases)
-Step 2: Extract file in a folder
-Step 3: Install android studio to download "Intel x86 Emulator Accelerator (HAXM installer)" in SDK Tools. Error happen!!!
-Step 4: Copy HAXM folder and paste in SDK folder
-Step 5: Run "haxm-7.8.0-setup.exe" file
-Step 6: Back to android studio, continue...
+Check Hyper-V in windows. By enter "Turn Windows features on or off" in Start. 
+
+==> Missing Hyper-V in windows 11 Home
+
+**Step 1:** Create a txt file. Example: "hyperv.txt"
+
+```txt
+pushd "%~dp0"
+
+dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum >hyper-v.txt
+
+for /f %%i in ('findstr /i . hyper-v.txt 2^>nul') do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
+
+del hyper-v.txt
+
+Dism /online /enable-feature /featurename:Microsoft-Hyper-V -All /LimitAccess /ALL
+
+pause
+```
+**Step 2:** Save As "hyperv.txt" 
+**Step 3:** Save As "hyper.bat" --> Run as administrator
+
+**Step 4:**
+Back to "Turn Windows features on or off":
+- Unchecked: Hyper-V
+- Checked: Virtual Machine Platform
+- Checked: Windows Hypervisor Platform
+
+**Step 5:** [Download HAXM]:(https://github.com/intel/haxm/releases)
+
+**Step 6:** Extract file in a folder
+
+**Step 7:** Install android studio to download "Intel x86 Emulator Accelerator (HAXM installer)" in SDK Tools. Error happen!!!
+
+**Step 8:** Copy HAXM folder and paste in SDK folder
+
+**Step 9:** Run "haxm-7.8.0-setup.exe" file
+
+**Step 10:** Back to android studio, continue...
+
+
+
