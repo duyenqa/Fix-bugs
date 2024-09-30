@@ -5,14 +5,14 @@ Failed to create session. An unknown server-side error occurred while processing
 
 **Solution:** Restarting the Host Network Service on Windows
 
-- Open cmd 1:
+- Run cmd 1 as administrator:
 
 ```txt
 net stop hns
 net start hns
 ```
 
-- Open cmd 2:
+- Run cmd 2:
 
 ```txt
 appium --alow-cors
