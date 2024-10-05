@@ -67,5 +67,13 @@ Back to "Turn Windows features on or off":
 
 **Refer detail:** [Youtube](https://www.youtube.com/watch?v=EwbNr_rmcwI)
 
+## Bug 3 - Start Appium in Command Prompt
+Could not start REST http interface listener
+Could not configure Appium server. It's possible that a driver or plugin tried to update the server and failed. Original error: listen EACCES: permission denied 0.0.0.0:4723
+
+**Solution:**
+
+Restart the computer 
+
 ## Author
 By Ngô Thị Kim Duyên
