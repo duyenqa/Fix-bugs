@@ -87,30 +87,33 @@ Restart the computer
 |TC01 |  admin    |  demo123 |
 
 ```java
-String[][] table = null;
-try {
-    FileInputStream fileInputStream = new FileInputStream(new File("D:\\login.xlsx"));
-    XSSFWorkbook xssfWorkbook = new XSSFWorkbook(fileInputStream);
-    XSSFSheet xssfSheet = xssfWorkbook.getSheet("Sheet1");
-
-    int startRow = 1;
-    int totalRows = xssfSheet.getLastRowNum();
-    table = new String[totalRows][2];
-
-    for (int i = startRow; i <= totalRows; i++) {
-        for (int j = 1; j <= 2; j++) {
-            XSSFCell cell = xssfSheet.getRow(i).getCell(j);
-            if (cell != null) {
-                String cellValue = cell.getStringCellValue();
-                table[i][j] = cellValue;
-                System.out.println(cellValue);
-            } else {
-                System.out.println("Error data!!! Cell at row " + i + ", column " + j + " is null.");
+@DataProvider(name = "LoginDataProvider")
+public Object[][] LoginData() {
+    String[][] table = null;
+    try {
+        FileInputStream fileInputStream = new FileInputStream(new File("D:\\login.xlsx"));
+        XSSFWorkbook xssfWorkbook = new XSSFWorkbook(fileInputStream);
+        XSSFSheet xssfSheet = xssfWorkbook.getSheet("Sheet1");
+    
+        int startRow = 1;
+        int totalRows = xssfSheet.getLastRowNum();
+        table = new String[totalRows][2];
+    
+        for (int i = startRow; i <= totalRows; i++) {
+            for (int j = 1; j <= 2; j++) {
+                XSSFCell cell = xssfSheet.getRow(i).getCell(j);
+                if (cell != null) {
+                    String cellValue = cell.getStringCellValue();
+                    table[i][j] = cellValue;
+                    System.out.println(cellValue);
+                } else {
+                    System.out.println("Error data!!! Cell at row " + i + ", column " + j + " is null.");
+                }
             }
         }
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
     }
-} catch (Exception e) {
-    System.out.println(e.getMessage());
 }
 ```
 
@@ -123,32 +126,35 @@ table[i-1][j-1] = cellValue;
 
 **Fix fix way 2**
 ```java
-String[][] table = null;
-
-try {
-    FileInputStream fileInputStream = new FileInputStream(new File("D:\\login.xlsx"));
-    XSSFWorkbook xssfWorkbook = new XSSFWorkbook(fileInputStream);
-    XSSFSheet xssfSheet = xssfWorkbook.getSheet("Sheet1");
-
-    int startRow = 1;
-    int ci = 0, cj = 0;
-    int totalRows = xssfSheet.getLastRowNum();
-    table = new String[totalRows][2];
-
-    for (int i = startRow; i <= totalRows; i++, ci++) {
-        for (int j = 1; j <= 2; j++, cj++) {
-            XSSFCell cell = xssfSheet.getRow(i).getCell(j);
-            if (cell != null) {
-                String cellValue = cell.getStringCellValue();
-                table[ci][cj] = cell.getStringCellValue();
-                System.out.println(cellValue);
-            } else {
-                System.out.println("Error data!!! Cell at row " + i + ", column " + j + " is null.");
+@DataProvider(name = "LoginDataProvider")
+public Object[][] LoginData() {
+    String[][] table = null;
+    
+    try {
+        FileInputStream fileInputStream = new FileInputStream(new File("D:\\login.xlsx"));
+        XSSFWorkbook xssfWorkbook = new XSSFWorkbook(fileInputStream);
+        XSSFSheet xssfSheet = xssfWorkbook.getSheet("Sheet1");
+    
+        int startRow = 1;
+        int ci = 0, cj = 0;
+        int totalRows = xssfSheet.getLastRowNum();
+        table = new String[totalRows][2];
+    
+        for (int i = startRow; i <= totalRows; i++, ci++) {
+            for (int j = 1; j <= 2; j++, cj++) {
+                XSSFCell cell = xssfSheet.getRow(i).getCell(j);
+                if (cell != null) {
+                    String cellValue = cell.getStringCellValue();
+                    table[ci][cj] = cell.getStringCellValue();
+                    System.out.println(cellValue);
+                } else {
+                    System.out.println("Error data!!! Cell at row " + i + ", column " + j + " is null.");
+                }
             }
         }
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
     }
-} catch (Exception e) {
-    System.out.println(e.getMessage());
 }
 ```
 
@@ -163,33 +169,48 @@ try {
 |  admin    |  demo123 |
 
 ```java
-String[][] table = null;
-
-try {
-    FileInputStream fileInputStream = new FileInputStream(new File("D:\\login.xlsx"));
-    XSSFWorkbook xssfWorkbook = new XSSFWorkbook(fileInputStream);
-    XSSFSheet xssfSheet = xssfWorkbook.getSheet("Sheet1");
-
-    int startRow = 1;
-    int totalRows = xssfSheet.getLastRowNum();
-    table = new String[totalRows][2];
-
-    for (int i = startRow; i <= totalRows; i++) {
-        for (int j = 0; j < 2; j++) {
-            XSSFCell cell = xssfSheet.getRow(i).getCell(j);
-            if (cell != null) {
-                String cellValue = cell.getStringCellValue();
-                table[i - 1][j] = cellValue;
-                System.out.println(cellValue);
-            } else {
-                System.out.println("Error data!!! Cell at row " + i + ", column " + j + " is null.");
+@DataProvider(name = "LoginDataProvider")
+public Object[][] LoginData() {
+    String[][] table = null;
+    
+    try {
+        FileInputStream fileInputStream = new FileInputStream(new File("D:\\login.xlsx"));
+        XSSFWorkbook xssfWorkbook = new XSSFWorkbook(fileInputStream);
+        XSSFSheet xssfSheet = xssfWorkbook.getSheet("Sheet1");
+    
+        int startRow = 1;
+        int totalRows = xssfSheet.getLastRowNum();
+        table = new String[totalRows][2];
+    
+        for (int i = startRow; i <= totalRows; i++) {
+            for (int j = 0; j < 2; j++) {
+                XSSFCell cell = xssfSheet.getRow(i).getCell(j);
+                if (cell != null) {
+                    String cellValue = cell.getStringCellValue();
+                    table[i - 1][j] = cellValue;
+                    System.out.println(cellValue);
+                } else {
+                    System.out.println("Error data!!! Cell at row " + i + ", column " + j + " is null.");
+                }
             }
         }
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
     }
-} catch (Exception e) {
-    System.out.println(e.getMessage());
-} 
+}
 ```
-
+**Fix fix way 4**
+- Don't read file excel
+  
+```java
+@DataProvider(name = "LoginDataProvider")
+public Object[][] LoginData() {
+    return new Object[][]{
+            {"test", "123456"},
+            {"test123", "123456"},
+            {"admin", "demo123"}
+    };
+}
+```
 ## Author
 By Ngô Thị Kim Duyên - 2024
