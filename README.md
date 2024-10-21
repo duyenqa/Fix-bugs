@@ -87,7 +87,7 @@ Restart the computer
 ```java
 String[][] table = null;
 try {
-    FileInputStream fileInputStream = new FileInputStream(new File("D:\\login.xlsx"));
+    FileInputStream fileInputStream = new FileInputStream(new File("D:\\test.xlsx"));
     XSSFWorkbook xssfWorkbook = new XSSFWorkbook(fileInputStream);
     XSSFSheet xssfSheet = xssfWorkbook.getSheet("Sheet1");
 
@@ -148,6 +148,42 @@ try {
 } catch (Exception e) {
     System.out.println(e.getMessage());
 }
+```
+
+**Fix fix way 3**
+- Adjust excel file ^^ Hihi
+  
+| Username  | Password |
+|-----------|----------|
+|  test     |  123456  |
+
+```java
+String[][] table = null;
+
+try {
+    FileInputStream fileInputStream = new FileInputStream(new File("D:\\test.xlsx"));
+    XSSFWorkbook xssfWorkbook = new XSSFWorkbook(fileInputStream);
+    XSSFSheet xssfSheet = xssfWorkbook.getSheet("Sheet1");
+
+    int startRow = 1;
+    int totalRows = xssfSheet.getLastRowNum();
+    table = new String[totalRows][2];
+
+    for (int i = startRow; i <= totalRows; i++) {
+        for (int j = 0; j < 2; j++) {
+            XSSFCell cell = xssfSheet.getRow(i).getCell(j);
+            if (cell != null) {
+                String cellValue = cell.getStringCellValue();
+                table[i - 1][j] = cellValue;
+                System.out.println(cellValue);
+            } else {
+                System.out.println("Error data!!! Cell at row " + i + ", column " + j + " is null.");
+            }
+        }
+    }
+} catch (Exception e) {
+    System.out.println(e.getMessage());
+} 
 ```
 
 ## Author
