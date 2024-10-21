@@ -83,11 +83,13 @@ Restart the computer
 | TC  | Username  | Password |
 |-----|-----------|----------|
 |TC01 |  test     |  123456  |
+|TC01 |  test123  |  123456  |
+|TC01 |  admin    |  demo123 |
 
 ```java
 String[][] table = null;
 try {
-    FileInputStream fileInputStream = new FileInputStream(new File("D:\\test.xlsx"));
+    FileInputStream fileInputStream = new FileInputStream(new File("D:\\login.xlsx"));
     XSSFWorkbook xssfWorkbook = new XSSFWorkbook(fileInputStream);
     XSSFSheet xssfSheet = xssfWorkbook.getSheet("Sheet1");
 
@@ -124,7 +126,7 @@ table[i-1][j-1] = cellValue;
 String[][] table = null;
 
 try {
-    FileInputStream fileInputStream = new FileInputStream(new File("D:\\test.xlsx"));
+    FileInputStream fileInputStream = new FileInputStream(new File("D:\\login.xlsx"));
     XSSFWorkbook xssfWorkbook = new XSSFWorkbook(fileInputStream);
     XSSFSheet xssfSheet = xssfWorkbook.getSheet("Sheet1");
 
@@ -151,17 +153,20 @@ try {
 ```
 
 **Fix fix way 3**
-- Adjust excel file ^^ Hihi
+- Adjust excel file
+- _**This is not recommended**_, if you edit what was originally, the interviewer will let you fail
   
 | Username  | Password |
 |-----------|----------|
 |  test     |  123456  |
+|  test123  |  123456  |
+|  admin    |  demo123 |
 
 ```java
 String[][] table = null;
 
 try {
-    FileInputStream fileInputStream = new FileInputStream(new File("D:\\test.xlsx"));
+    FileInputStream fileInputStream = new FileInputStream(new File("D:\\login.xlsx"));
     XSSFWorkbook xssfWorkbook = new XSSFWorkbook(fileInputStream);
     XSSFSheet xssfSheet = xssfWorkbook.getSheet("Sheet1");
 
@@ -187,4 +192,4 @@ try {
 ```
 
 ## Author
-By Ngô Thị Kim Duyên
+By Ngô Thị Kim Duyên - 2024
