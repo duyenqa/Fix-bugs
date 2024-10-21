@@ -114,6 +114,7 @@ public Object[][] LoginData() {
     } catch (Exception e) {
         System.out.println(e.getMessage());
     }
+    return table;
 }
 ```
 
@@ -155,6 +156,7 @@ public Object[][] LoginData() {
     } catch (Exception e) {
         System.out.println(e.getMessage());
     }
+    return table;
 }
 ```
 
@@ -197,6 +199,7 @@ public Object[][] LoginData() {
     } catch (Exception e) {
         System.out.println(e.getMessage());
     }
+    return table;
 }
 ```
 **Fix fix way 4**
