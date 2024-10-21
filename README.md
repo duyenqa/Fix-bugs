@@ -1,7 +1,7 @@
 # Fix-bugs
 
 ## Bug 1 - Error Appium Inspector when start session
-Failed to create session. An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: 'Command 'C:\\Users\\Admin\\Documents\\Learning24\\SDK\\platform-tools\\adb.exe -P 5037 -s emulator-5554 forward tcp\:8200 tcp\:6790' exited with code 1'; Command output: adb.exe: error: cannot bind listener: cannot bind to 127.0.0.1:8200: **An attempt was made to access a socket in a way forbidden by its access permissions.(10013)**
+> Failed to create session. An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: 'Command 'C:\\Users\\Admin\\Documents\\Learning24\\SDK\\platform-tools\\adb.exe -P 5037 -s emulator-5554 forward tcp\:8200 tcp\:6790' exited with code 1'; Command output: adb.exe: error: cannot bind listener: cannot bind to 127.0.0.1:8200: **An attempt was made to access a socket in a way forbidden by its access permissions.(10013)**
 
 **Solution:** Restarting the Host Network Service on Windows
 
@@ -19,7 +19,7 @@ appium --alow-cors
 ```
 
 ## Bug 2 - Install android studio 2024
-Intel HAXM installation failed!
+> Intel HAXM installation failed!
 For more details, please check the installation log: C:\Users\Admin\Appdata\Local\Temp\haxm_install-20240928_1614.log
 Intel HAXM installation failed. To install Intell HAXM follow the instructions found at: https://github.com/intel/haxm/wiki/Installation-Instructions-on-Windows
 
@@ -68,7 +68,7 @@ Back to "Turn Windows features on or off":
 **Refer detail:** [Youtube](https://www.youtube.com/watch?v=EwbNr_rmcwI)
 
 ## Bug 3 - Start Appium in Command Prompt
-Could not start REST http interface listener
+> Could not start REST http interface listener
 Could not configure Appium server. It's possible that a driver or plugin tried to update the server and failed. Original error: listen EACCES: permission denied 0.0.0.0:4723
 
 **Solution:**
@@ -76,8 +76,9 @@ Could not configure Appium server. It's possible that a driver or plugin tried t
 Restart the computer 
 
 ## Bug 4 - Read Data from excel file to web
-Error: java.lang.IllegalArgumentException: Keys to send should be a not null CharSequence
-TestLogin[null,null]
+> Error: java.lang.IllegalArgumentException: Keys to send should be a not null CharSequence
+> 
+> TestLogin[null,null]
 
 | TC  | Username  | Password |
 |-----|-----------|----------|
