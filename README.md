@@ -75,5 +75,79 @@ Could not configure Appium server. It's possible that a driver or plugin tried t
 
 Restart the computer 
 
+## Bug 4 - Read Data from excel file to web
+Error: java.lang.IllegalArgumentException: Keys to send should be a not null CharSequence
+TestLogin[null,null]
+
+| TC  | Username  | Password |
+|-----|-----------|----------|
+|TC01 |  test     |  123456  |
+
+```java
+String[][] table = null;
+try {
+    FileInputStream fileInputStream = new FileInputStream(new File("D:\\login.xlsx"));
+    XSSFWorkbook xssfWorkbook = new XSSFWorkbook(fileInputStream);
+    XSSFSheet xssfSheet = xssfWorkbook.getSheet("Sheet1");
+
+    int startRow = 1;
+    int totalRows = xssfSheet.getLastRowNum();
+    table = new String[totalRows][2];
+
+    for (int i = startRow; i <= totalRows; i++) {
+        for (int j = 1; j <= 2; j++) {
+            XSSFCell cell = xssfSheet.getRow(i).getCell(j);
+            if (cell != null) {
+                String cellValue = cell.getStringCellValue();
+                table[i][j] = cellValue;
+                System.out.println(cellValue);
+            } else {
+                System.out.println("Error data!!! Cell at row " + i + ", column " + j + " is null.");
+            }
+        }
+    }
+} catch (Exception e) {
+    System.out.println(e.getMessage());
+}
+```
+
+**Fix fix way 1**
+```java
+...
+table[i-1][j-1] = cellValue;
+...
+```
+
+**Fix fix way 2**
+```java
+String[][] table = null;
+
+try {
+    FileInputStream fileInputStream = new FileInputStream(new File("D:\\test.xlsx"));
+    XSSFWorkbook xssfWorkbook = new XSSFWorkbook(fileInputStream);
+    XSSFSheet xssfSheet = xssfWorkbook.getSheet("Sheet1");
+
+    int startRow = 1;
+    int ci = 0, cj = 0;
+    int totalRows = xssfSheet.getLastRowNum();
+    table = new String[totalRows][2];
+
+    for (int i = startRow; i <= totalRows; i++, ci++) {
+        for (int j = 1; j <= 2; j++, cj++) {
+            XSSFCell cell = xssfSheet.getRow(i).getCell(j);
+            if (cell != null) {
+                String cellValue = cell.getStringCellValue();
+                table[ci][cj] = cell.getStringCellValue();
+                System.out.println(cellValue);
+            } else {
+                System.out.println("Error data!!! Cell at row " + i + ", column " + j + " is null.");
+            }
+        }
+    }
+} catch (Exception e) {
+    System.out.println(e.getMessage());
+}
+```
+
 ## Author
 By Ngô Thị Kim Duyên
