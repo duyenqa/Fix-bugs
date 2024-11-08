@@ -118,7 +118,7 @@ public Object[][] LoginData() {
 }
 ```
 
-**Fix fix way 1**
+**Fix way 1**
 ```java
 ...
 table[i-1][j-1] = cellValue;
@@ -160,7 +160,7 @@ public Object[][] LoginData() {
 }
 ```
 
-**Fix fix way 3**
+**Fix way 3**
 - Adjust excel file
 - _**This is not recommended**_, if you edit what was originally, the interviewer will let you fail
   
@@ -202,7 +202,7 @@ public Object[][] LoginData() {
     return table;
 }
 ```
-**Fix fix way 4**
+**Fix way 4**
 - Don't read file excel
   
 ```java
@@ -215,5 +215,16 @@ public Object[][] LoginData() {
     };
 }
 ```
+
+**Remove database**
+> Cannot drop database "Salesdb" because it is currently in use.
+
+**Solution:**
+```sql
+ALTER DATABASE Salesdb SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+GO
+DROP DATABASE Salesdb;
+```
+
 ## Author
 By Ngô Thị Kim Duyên - 2024
