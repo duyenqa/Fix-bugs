@@ -216,7 +216,7 @@ public Object[][] LoginData() {
 }
 ```
 
-**Remove database**
+## Bug 5 - Remove database
 > Cannot drop database "Salesdb" because it is currently in use.
 
 **Solution:**
