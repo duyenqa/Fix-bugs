@@ -221,6 +221,9 @@ public Object[][] LoginData() {
 
 **Solution:**
 ```sql
+USE master
+GO
+
 ALTER DATABASE Salesdb SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
 GO
 DROP DATABASE Salesdb;
